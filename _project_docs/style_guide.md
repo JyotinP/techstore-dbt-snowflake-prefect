@@ -44,7 +44,7 @@ dbt
 ```
 - All objects should be plural, such as: `stg_quickbooks__invoices`
 - Base tables (if needed) are prefixed with `base__`, such as: `base__<source>_<object>`
-- Staging models are 1:1 with each source table and named with the following convention: `stg_<source>__<table_name>.sql`
+- Staging models are 1:1 with each source table and named with the following convention: `stg_<source_schema_name>__<source_table_name>.sql`
   - [Additional context on Staging models](https://docs.getdbt.com/guides/best-practices/how-we-structure/2-staging)
 - Intermediate tables should help break apart complex or lengthy logic and follow the following convention: `int_[entity]s_[verb]s.sql`
   - [Additional context on Intermediate models](https://docs.getdbt.com/guides/best-practices/how-we-structure/3-intermediate)
