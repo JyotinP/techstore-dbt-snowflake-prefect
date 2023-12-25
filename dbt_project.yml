@@ -27,6 +27,9 @@ seeds:
         NAME: varchar
         DISCOUNT_PERCENT: numeric(18,2)
 
+vars:
+  default_date: '9999-01-01'
+
 # Configuring models
 models:
   techstore_dbt:
