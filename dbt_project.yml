@@ -21,6 +21,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 seeds:
   techstore_dbt:
+    +schema: staging
     sale_dates:
       +column_types:
         SALE_DATE: date
@@ -36,9 +37,11 @@ models:
     # Config indicated by + and applies to all files under models/example/
     staging:
       +materialized: view
+      +schema: staging
     intermediate:
       +materialized: ephemeral
     marts:
       +materialized: table
+      +schema: marts
       +tags:
         - p1
