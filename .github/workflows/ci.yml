@@ -26,4 +26,5 @@ jobs:
         run: pip3 install dbt-snowflake
 
       - name: Deploy & Test Models (CI)
+        working-directory: ./dbt
         run: dbt build --profiles-dir . --target ci
