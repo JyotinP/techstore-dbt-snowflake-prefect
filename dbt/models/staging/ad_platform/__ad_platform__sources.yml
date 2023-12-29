@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: ad_platform
+    database: analytics_032
+    schema: raw_ad_platform
+    freshness:
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+      filter: created_at >= dateadd('day', -1, current_date())
+    loaded_at_field: convert_timezone('America/New_York', 'UTC', created_at)
+
+    tables:
+      - name: ads
+        freshness: null
+      - name: ad_performance_hourly
