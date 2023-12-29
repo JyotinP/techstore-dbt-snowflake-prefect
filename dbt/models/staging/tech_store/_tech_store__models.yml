@@ -26,5 +26,8 @@ models:
                 - Accessories
                 - Software
                 - Video
+          - dbt_utils.not_accepted_values:
+              values:
+                - Television
   - name: stg_tech_store__states
   - name: stg_tech_store__zip_codes

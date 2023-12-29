@@ -9,6 +9,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./dbt
     env:
       DBT_USER: ${{ secrets.DBT_USER }}
       DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
@@ -24,6 +27,9 @@ jobs:
           
       - name: Install dbt
         run: pip3 install dbt-snowflake
+
+      - name: Install packages
+        run: dbt deps
 
       - name: Deploy & Test Models (CI)
         working-directory: ./dbt

@@ -11,6 +11,9 @@ jobs:
   build-and-deploy:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./dbt
     env:
       DBT_USER: ${{ secrets.DBT_USER }}
       DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
@@ -27,6 +30,8 @@ jobs:
       - name: Install dbt
         run: pip3 install dbt-snowflake
 
+      - name: Install packages
+        run: dbt deps
+
       - name: Deploy & Test Models (PROD)
-        working-directory: ./dbt
         run: dbt build --profiles-dir . --target prod
