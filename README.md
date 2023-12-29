@@ -47,13 +47,7 @@ _All transformed data models are deployed to the `ANALYTICS_###` database._
     - `git checkout [branch-name]`
 - Download dbt packages
     - `dbt deps`
-- Start developing!
-   - *IMPORTANT* - All changes should follow the team [Style Guide](_project_docs/style_guide.md)
-   - You'll need to reactivate your Virtual Environment each time by running `source dbt-env/bin/activate` from `GitHub/` directory
-      - [Click here](https://docs.getdbt.com/dbt-cli/install/pip#using-virtual-environments) to learn more about using virtual environments w/ dbt, including ways to alias this acticate command.
 
 ### Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
 - Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
