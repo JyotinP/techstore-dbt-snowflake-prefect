@@ -1,0 +1,36 @@
+-- Getting Started
+1. Sign up for Prefect Cloud
+  - Get API key
+2. Install Prefect locally
+  - pip3 install prefect
+  - prefect cloud login -k [api-key]
+3. Install dbt & Snowflake modules
+  - pip3 install prefect-dbt (https://prefecthq.github.io/prefect-dbt/)
+     - prefect block register -m prefect_dbt
+  - pip3 install prefect-snowflake (https://prefecthq.github.io/prefect-snowflake/)
+     - prefect block register -m prefect_snowflake.credentials
+4. Configure blocks on Prefect Cloud
+  - dbt Snowflake Target configs
+  - Snowflake credentials
+  - Snowflake connector
+5. Create local script and test
+  - deploy_dbt_models.py
+6. Build & Apply a deployment
+  - prefect deployment build deploy_dbt_models.py:dbt_deploy_wrapper --name "Daily Production Refresh"
+  - prefect deployment apply dbt_deploy_wrapper-deployment.yaml
+7. Start a local agent for 'default'
+  - prefect agent start -q 'default'
+8. Create S3 bucket & Add Files
+9. Add storage block (S3) & deploy
+  - prefect deployment build deploy_dbt_models.py:dbt_deploy_wrapper --name "Daily Production Refresh" \
+    --storage-block s3/prefect-s3-storage --apply
+10. Add notifications
+
+-- Hosted Runner
+11. Create virtual machine
+  - Add startup script
+12. Create AWS Credential block
+13. Add work-queue & deploy
+  - prefect deployment build deploy_dbt_models.py:dbt_deploy_wrapper --name "Daily Production Refresh" \
+    --pool "ec2-prefect-vm" --work-queue "default" --storage-block s3/prefect-s3-storage --apply
+14. Set a schedule
