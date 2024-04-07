@@ -1,52 +1,23 @@
-## Techstore Project with dbt and Snowflake
+## Techstore Project with dbt, Snowflake and Prefect
 This repository consists of a [dbt](https://www.getdbt.com/) project that transforms raw data sources into clear, formatted models for Analytics.
 
 ### Sources:
 _All source data is loaded to the `RAW` database._
 - `tech_store` - An internal company database
 - `payment_app` - A third party payment processing application
+- `ad_platform` - A third party advertisement platform which conatains data of ads and their performance metrics
+- `accounting_app` - A third party accounting application which consists of invoice data
 
 ### Target Environments:
-_All transformed data models are deployed to the `ANALYTICS_###` database._
+_All transformed data models are deployed to the `ANALYTICS` database._
 - **Development**
-   - Schema: `DBT_JDOE`
+   - Schema: `dbt_jpatel`
      - One per developer _(first initial, last name)_
 - **Production**
    - Schema: `STAGING`
      - 1:1 with each soure-system table
    - Schema: `MARTS`
-     - Fully transformed and joined models ready for analytics   
-   
-### How to Get Started?
-- Confirm both Python & Git are on local machine (if not, download them)
-   - Run `python --version` or `python3 --version`
-      - [Python Download](https://www.python.org/downloads)
-- Create a Python [virtual environment](https://docs.getdbt.com/docs/faqs/install-pip-best-practices#using-virtual-environments) to isolate project dependencies
-    1. Right-Click under `GitHub/` and select "Open Integrated Terminal"  
-    2. Run `python3 -m venv dbt-env` to create virtual environment
-    3. Run `source dbt-env/bin/activate` to activate & use the virtual environment
-- [Install dbt](https://docs.getdbt.com/dbt-cli/install/overview) locally (inside virtual environment) using the proper [adapter](https://docs.getdbt.com/docs/supported-data-platforms)
-    - Run `pip install dbt-snowflake`
-- Clone this repository within the `GitHub/` folder
-    - Run `git clone https://github.com/JyotinP/techstore-dbt-snowflake.git`
-- Pull latest repository changes on the `main` branch
-    - Run `git pull`
-- Identify the `profiles.yml` file on your local machine 
-    - Local File Path: `~/.dbt/profiles.yml`
-      - Will be hidden by default on Mac/Linux. Press `CMD + SHIFT + .` to reveal.
-    - Copy/Paste contents of `_project_docs/sample-profiles.yml`
-      - Update your `dataset` accordingly
-- Validate successful database connection
-    - Run `cd dbt` to switch into dbt project directory
-    - Run `dbt debug` to validate dbt can connect
-- Add remote origin
-  - Run `git remote add origin https://github.com/[USERNAME]/[REPO].git`
-- Create a new branch
-    - `git branch [branch-name]`
-- Checkout branch
-    - `git checkout [branch-name]`
-- Download dbt packages
-    - `dbt deps`
+     - Fully transformed and joined models ready for analytics
 
 ### Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
